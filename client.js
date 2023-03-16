@@ -9,8 +9,16 @@ const connect = function() {
   conn.setEncoding("utf8");
   conn.write("Yup");
   conn.on("connect", () => {
-    conn.write("Name: Yup!");
-    conn.write('Hmmm!');
+    console.log('Successfully connected to game server');
+    conn.write('Name: May');
+  });
+
+  conn.on(connect, () => {
+    process.write("Successfully connected to game server");
+  });
+
+  conn.on('data', (data) => {
+    console.log('Server says: ', data);
   });
 
 
@@ -18,4 +26,4 @@ const connect = function() {
   return conn;
 };
 
-module.exports = {connect};
+module.exports = { connect };
